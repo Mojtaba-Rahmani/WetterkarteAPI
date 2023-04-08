@@ -1,0 +1,140 @@
+﻿@using static WetterKarte.DL.DTO.Class
+@*@{
+    ViewData["Title"] = "Home Page";
+}*@
+@model ResultViewModel
+@{    
+    ViewBag.Title = "Weather";    
+}    
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <style>
+            .Headerborder { background-color:#1E90FF}
+           .footerborder { background-color:#1E90FF;height:50px}
+           .btnsearch{background-color:#1E90FF; color:white}
+           .Color{background-color:#DCDCDC}
+           .input-group{background-color:#DCDCDC}
+           .input-group-append{background-color:#DCDCDC}
+        </style>
+
+        <div class="row ">
+            <div class="col-md-3"> </div>
+    <div class="col-md-6 ">
+        <span class="form-control opacity-75 Headerborder"  >
+<h1 class="text-center text-light ">Aktuelle Wetterinformationen</h1>    
+    </span>
+  
+     <label id="MyLocation"  class="d-lg-block input-group "></label>
+         <h3 >Stadtnamen eingeben</h3> 
+   
+    <div class="input-group mb-4 Color" >
+    
+  <input id="txtCity" type="text" class="form-control" placeholder="Stadt Name :"  aria-describedby="basic-addon2">
+  <div class="input-group-append Color">
+    <button id="btnSubmit" class="btn btn-outline-secondary btnsearch " type="button">Stadt suchen</button>
+  </div>
+</div>
+
+    
+
+
+@*   <br />*@
+
+                <div class="col-md-12">  
+    
+            <div class="form-control Color">    
+             <h3>Aktuelle Wetterlage in : <lable id="Stadt" ></lable>  </h3> 
+             <table class="d-lg-table">    
+                <tr class="d-lg-table-row">    
+                    <td>Weather Symbol Icon <img id="imgWeatherIconUrl" src="" title="Weather Icon" /></td>    
+                </tr>    
+                      <tr class="d-lg-table-row">    
+                          <td class="d-lg-table-cell">    
+                              <strong>City: </strong>    
+                              <span id="lblCity"></span>  ,    
+                              <span id="lblCountry"></span>    
+                          </td>    
+                          </tr>    
+                     
+                      <tr class="d-lg-table-row">    
+                          <td class="d-lg-table-cell">    
+                              <strong>Description:</strong>    
+                              <label id="lblDescription"></label><br />    
+                          </td>    
+                          </tr>    
+                      <tr class="d-lg-table-row">    
+                          <td class="d-lg-table-cell">    
+                              Temperatur : <label id="lblTempFeelsLike"></label><br />    
+                              Luftdruck : <label id="lblPressure"></label><br />  
+                              Feuchtigkeit : <label id="lblHumidity"></label><br />    
+                              geringste Temperatur : <label id="lblTempMin"></label><br />    
+                              höchste Temperatur : <label id="lblTempMax"></label><br />  
+                              Windgeschwindigkeit : <label id="lblWind"></label><br /> 
+                              Windrichtung : <label id="lblwindrichtung"></label><br /> 
+                          </td>    
+                      </tr>    
+           
+    
+              </table>    
+                </div>    
+                    </div>
+            <span class="form-control  opacity-75 footerborder" > </span>
+                 </div>  
+             
+                 </div> 
+        
+<script>    
+        
+    $.get("https://api.ipdata.co?api-key=1bab6c85ea8fd0f1038dc295ad1b6f5f102270f3a653b24f61264d83", function(response) {
+    $("#MyLocation").html("Ihr Standort ist : " + response.city);   
+    FillDetails(response.city);
+}, "jsonp");
+browserVersion();
+function browserVersion(){
+        var v = "Version: " + navigator.appVersion;
+        //document.getElementById("demo").innerHTML = v;
+      }
+
+function FillDetails(Mycity) {
+ $.ajax({    
+           
+            url: "http://localhost:5114/Home/WeatherDetail?City="+Mycity,    
+            type: "POST",    
+            success: function (rsltval) {    
+                var data =JSON.parse(rsltval); 
+                $("#Stadt").html(data.City);  
+                $("#lblCity").html(data.City);    
+                $("#lblCountry").text(data.Country);    
+                $("#lblDescription").text(data.Description);    
+                $("#lblHumidity").text(data.Humidity +" %");    
+                $("#lblTempFeelsLike").text(data.TempFeelsLike +" C°");    
+                $("#lblTemp").text(data.Temp);    
+                $("#lblTempMax").text(data.TempMax +" C°");    
+                $("#lblTempMin").text(data.TempMin +" C°"); 
+                $("#lblWind").text(data.Wind +" m/s"); 
+                $("#lblwindrichtung").text(data.Winddeg+" °"); 
+                 $("#lblPressure").text(data.Pressure +" hPa"); 
+                
+                $("#imgWeatherIconUrl").attr("src", "http://openweathermap.org/img/w/" + data.WeatherIcon + ".png");    
+                //data - response from server    
+            },    
+            error: function () {    
+                    alert("Error");
+            } 
+               }); 
+}
+
+
+    $("#btnSubmit").click(function () {    
+        var cityname = $("#txtCity").val(); 
+        if (cityname.length > 0)    
+        {    
+            FillDetails(cityname);
+        }    
+        else    
+        {    
+            alert("City Not Found");    
+        }    
+    });    
+    
+</script>    
