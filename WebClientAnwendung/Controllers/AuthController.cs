@@ -13,6 +13,7 @@ namespace WebClientAnwendung.Controllers
     {
         IHttpClientFactory _httpClientFactory;
         IUserService _IUserService;
+        bool ValidationToken;
         public AuthController(IHttpClientFactory httpClientFactory , IUserService IUserService)
         {
             _httpClientFactory = httpClientFactory;
@@ -24,32 +25,47 @@ namespace WebClientAnwendung.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel login)
+        public async Task<IActionResult> Login(LoginViewModel login)
         {
             if (!ModelState.IsValid)
             {
                 return View(login);
             }
-            var _client = _httpClientFactory.CreateClient("EshopClienet");             
-                                                                                       
-            var jsonBody = JsonConvert.SerializeObject(login);                         
-                                                                                       
+
+            ValidationToken = await Validtoken(login);
+
+            if (ValidationToken == true)
+                return Redirect("/Home/Index");
+
+            else
+            {
+                   ModelState.AddModelError("Nutzername", "user Not Valid");
+                   return View(login);
+            }
+
+        }
+        public async Task<bool> Validtoken(LoginViewModel login)
+        {
+            var _client = _httpClientFactory.CreateClient("EshopClienet");
+
+            var jsonBody = JsonConvert.SerializeObject(login);
+
             var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
 
             var response = _client.PostAsync("/Api/Auth", content).Result;
 
             if (response.IsSuccessStatusCode)
             {
-                 string token = response.Content.ReadAsStringAsync().Result;
-         
+                string token = response.Content.ReadAsStringAsync().Result;
+                //var token = await response.Content.ReadAsAsync<TokenModel>().Result;
+
                 var Claims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.NameIdentifier,login.Nutzername),
 
                     new Claim(ClaimTypes.Name, login.Nutzername),
 
-                     new Claim("AccessToken", token)
-
+                    new Claim("AccessToken",token)
                 };
 
                 var identity = new ClaimsIdentity(Claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -59,22 +75,19 @@ namespace WebClientAnwendung.Controllers
                     IsPersistent = true,
                     AllowRefresh = true
                 };
-                
-                HttpContext.SignInAsync(principal, properties);
-                return Redirect("/Home/Index");
+
+                await HttpContext.SignInAsync(principal, properties);
+                return true;
             }
-            else
-            {
-                ModelState.AddModelError("Nutzername", "user Not Valid");
-                return View(login);
-            }
+            else return false;
 
 
         }
 
 
         #region Logout
-        [Route("Logout")]
+     
+        [Route("/Auth/Logout")]
         public IActionResult Logout()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);

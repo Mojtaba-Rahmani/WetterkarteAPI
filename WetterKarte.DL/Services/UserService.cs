@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using WetterKarte.DL.Services.Interfaces;
 using static WetterKarte.DL.DTO.Class;
 
@@ -22,10 +23,26 @@ namespace WetterKarte.DL.Services
         {
             _client = client;
         }
+        public bool GetToken(string token)
+        {
+            var userApiUrl = "http://localhost:5070/api/Wetter/GetCity/";
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            try
+            {
+                var result = _client.GetStringAsync(userApiUrl).Result;
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+          
+        }
         public ResultViewModel GetCity(string City)
         {
             //var token = HttpContext.
-
+           
             var userApiUrl = "http://localhost:5070/api/Wetter/GetCity/" + City;
 
 
@@ -35,6 +52,8 @@ namespace WetterKarte.DL.Services
 
             return List;
         }
+
+     
 
         /// <summary>
         /// Wenn möchten Sie von Databank Anwenden

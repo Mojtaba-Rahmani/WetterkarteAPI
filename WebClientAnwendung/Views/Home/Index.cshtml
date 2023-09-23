@@ -92,7 +92,6 @@
 browserVersion();
 function browserVersion(){
         var v = "Version: " + navigator.appVersion;
-        //document.getElementById("demo").innerHTML = v;
       }
 
 function FillDetails(Mycity) {
@@ -116,7 +115,6 @@ function FillDetails(Mycity) {
                  $("#lblPressure").text(data.Pressure +" hPa"); 
                 
                 $("#imgWeatherIconUrl").attr("src", "http://openweathermap.org/img/w/" + data.WeatherIcon + ".png");    
-                //data - response from server    
             },    
             error: function () {    
                     alert("Error");

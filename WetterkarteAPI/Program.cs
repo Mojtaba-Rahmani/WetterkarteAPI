@@ -38,11 +38,14 @@ builder.Services.AddCors(Options =>
 {
     Options.AddPolicy("EnableCors", builder =>
     {
-        
-        builder.AllowAnyOrigin() 
-                .AllowAnyHeader()
-                .AllowAnyMethod() 
-                .Build();
+
+        builder
+        //.AllowAnyOrigin()
+            .SetIsOriginAllowed(_ => true)
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .Build();
     });
 });
 /// <summary>
