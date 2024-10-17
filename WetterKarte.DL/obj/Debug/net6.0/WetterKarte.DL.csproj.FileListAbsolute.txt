@@ -34,3 +34,4 @@ C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WetterKarte.DL\obj\Debug\net6.0\WetterKarte
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WetterKarte.DL\obj\Debug\net6.0\refint\WetterKarte.DL.dll
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WetterKarte.DL\obj\Debug\net6.0\WetterKarte.DL.pdb
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WetterKarte.DL\obj\Debug\net6.0\ref\WetterKarte.DL.dll
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WetterKarte.DL\obj\Debug\net6.0\WetterKarte.DL.sourcelink.json

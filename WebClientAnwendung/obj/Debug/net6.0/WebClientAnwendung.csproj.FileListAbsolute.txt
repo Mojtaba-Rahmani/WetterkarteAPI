@@ -268,9 +268,16 @@ C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\staticw
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\scopedcss\bundle\WebClientAnwendung.styles.css
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\scopedcss\projectbundle\WebClientAnwendung.bundle.scp.css
-C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\WebClientAnwendung.csproj.CopyComplete
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\WebClientAnwendung.dll
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\refint\WebClientAnwendung.dll
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\WebClientAnwendung.pdb
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\WebClientAnwendung.genruntimeconfig.cache
 C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\ref\WebClientAnwendung.dll
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\bin\Debug\net6.0\Microsoft.Bcl.TimeProvider.dll
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\WebClientAnwendung.sourcelink.json
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\staticwebassets\msbuild.WebClientAnwendung.Microsoft.AspNetCore.StaticWebAssets.props
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\staticwebassets\msbuild.build.WebClientAnwendung.props
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.WebClientAnwendung.props
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.WebClientAnwendung.props
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\staticwebassets.pack.json
+C:\aaaaaaaaaaaaa\bbbb\WetterkarteAPI\WebClientAnwendung\obj\Debug\net6.0\WebClien.07E2468E.Up2Date

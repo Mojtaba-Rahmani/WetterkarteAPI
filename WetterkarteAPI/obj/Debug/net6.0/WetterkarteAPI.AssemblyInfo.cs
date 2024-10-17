@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WetterkarteAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ef0c3976952878d7251c627377055488e1edde3")]
 [assembly: System.Reflection.AssemblyProductAttribute("WetterkarteAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WetterkarteAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
